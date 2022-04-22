@@ -4,17 +4,26 @@ Content-Type: application/json
 
 {
     "user": {
-        "id": 1020814884,
-        "firstName": "Edwin",
-        "lastName": "Cardenas",
+        "id": 1032496495,
+        "firstName": "Ana",
+        "lastName": "Torres",
         "password": "12345"
     }
 }
 
 ### 
 
-GET http://localhost:3000/api/find-user/1020814884
+GET http://localhost:3000/api/find-user/1032496495
 
 ###
 
-DELETE http://localhost:3000/api/find-user/1020814884
+DELETE http://localhost:3000/api/delete-user/1032496495
+
+### 
+
+PATCH http://localhost:3000/api/update-user/1032496495
+Content-Type: application/json
+
+{
+    "firstName": "Ana Maria"
+}

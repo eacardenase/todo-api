@@ -34,7 +34,7 @@ router.post('/create-user', (req, res) => {
 
 router.get('/find-user/:id', (req, res) => {
     const client = createMongoDBClient();
-    const { id: userID } = req.params;
+    const userID = +req.params.id;
 
     client.connect(async (err) => {
         const collection = client.db('TODO').collection('users');
@@ -45,7 +45,7 @@ router.get('/find-user/:id', (req, res) => {
             });
         }
 
-        const user = await collection.findOne({ id: +userID });
+        const user = await collection.findOne({ id: userID });
 
         if (!user) {
             res.json({
@@ -63,9 +63,9 @@ router.get('/find-user/:id', (req, res) => {
     client.close();
 });
 
-router.delete('/find-user/:id', (req, res) => {
+router.delete('/delete-user/:id', (req, res) => {
     const client = createMongoDBClient();
-    const { id: userID } = req.params;
+    const userID = +req.params.id;
 
     client.connect(async (err) => {
         const collection = client.db('TODO').collection('users');
@@ -76,10 +76,39 @@ router.delete('/find-user/:id', (req, res) => {
             });
         }
 
-        await collection.deleteOne({ id: +userID });
+        await collection.deleteOne({ id: userID });
 
         res.status(200).json({
             message: 'User deleted successfully.',
+        });
+    });
+
+    client.close();
+});
+
+router.patch('/update-user/:id', (req, res) => {
+    const client = createMongoDBClient();
+    const userID = +req.params.id;
+    const userData = req.body;
+
+    client.connect(async (err) => {
+        const collection = client.db('TODO').collection('users');
+
+        if (err) {
+            res.status(500).json({
+                message: 'There was a problem connecting with the database.',
+            });
+        }
+
+        await collection.updateOne(
+            { id: userID },
+            {
+                $set: userData,
+            }
+        );
+
+        res.status(200).json({
+            message: 'User updated successfully.',
         });
     });
 
