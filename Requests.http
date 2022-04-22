@@ -1,4 +1,4 @@
-###
+### Create User Endpoint
 POST http://localhost:3000/api/create-user
 Content-Type: application/json
 
@@ -11,15 +11,15 @@ Content-Type: application/json
     }
 }
 
-### 
+### Find user info by id endpoint
 
 GET http://localhost:3000/api/find-user/1032496495
 
-###
+### Delete user info by id endpoint
 
 DELETE http://localhost:3000/api/delete-user/1032496495
 
-### 
+### Update specified user info by id endpoint
 
 PATCH http://localhost:3000/api/update-user/1032496495
 Content-Type: application/json
