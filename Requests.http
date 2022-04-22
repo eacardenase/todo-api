@@ -4,24 +4,24 @@ Content-Type: application/json
 
 {
     "user": {
-        "id": 1032496495,
-        "firstName": "Ana",
-        "lastName": "Torres",
+        "id": 1020814884,
+        "firstName": "Edwin",
+        "lastName": "Cardenas",
         "password": "12345"
     }
 }
 
 ### Find user info by id endpoint
 
-GET http://localhost:3000/api/find-user/1032496495
+GET http://localhost:3000/api/find-user/1020814884
 
 ### Delete user info by id endpoint
 
-DELETE http://localhost:3000/api/delete-user/1032496495
+DELETE http://localhost:3000/api/delete-user/1020814884
 
 ### Update specified user info by id endpoint
 
-PATCH http://localhost:3000/api/update-user/1032496495
+PATCH http://localhost:3000/api/update-user/1020814884
 Content-Type: application/json
 
 {
